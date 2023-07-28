@@ -1,7 +1,3 @@
-/**
- * THIS FILE HAS BEEN REPLACED BY THE setup-orthomoji.sh SCRIPT FILE
- */
-
 import { drawBorderToCanvas } from './../tools/border.js';
 
 /**
