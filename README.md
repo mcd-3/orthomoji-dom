@@ -19,9 +19,10 @@ npm install git+https://github.com/mcd-3/orthomoji-dom.git
 ## How to use
 First, you will need to use an instance of the Orthomoji object
 ```js
-import { Orthomoji } from 'orthomoji';
+import { Orthomoji } from 'orthomoji-dom';
 
-const orthomoji = new Orthomoji(); 
+// "canvas-id" needs to be the ID of the canvas you want to draw to
+const orthomoji = new Orthomoji("canvas-id"); 
 ```
 
 Once the above is done, simply chain some functions to generate an image!
