@@ -1,11 +1,11 @@
-import pkg from 'canvas';
+/**
+ * THIS FILE HAS BEEN REPLACED BY THE setup-orthomoji.sh SCRIPT FILE
+ */
+
 import { sanitizeText } from '../tools/text-sanitizer.js';
 import { emojifyFont, hasValidEmoji, getFirstEmoji } from '../tools/emoji.js';
 import { font } from '../fonts/orthomoji.js';
 import { addTextToCanvas } from '../tools/canvas.js';
-import { saveToDestination } from '../tools/image-saver.js';
-
-const { Canvas } = pkg;
 
 /**
  * Base Orthomoji class. Generates an emoji-text image
@@ -15,8 +15,12 @@ const { Canvas } = pkg;
 class Orthomoji {
     #canvas
 
-    constructor() {
-        this.#canvas = new Canvas(10, 10);
+    constructor(canvas) {
+        if (typeof canvas == 'string') {
+            this.#canvas = document.getElementById("main-canvas");
+        } else {
+            throw new Error('ERROR: orthomoji-dom only accepts the ID of a canvas at the moment');
+        }
         this.text = null;
         this.emoji = null;
         this.bgStyle = null;
@@ -47,7 +51,7 @@ class Orthomoji {
      */
     setEmoji(emoji) {
         if (hasValidEmoji(emoji)) {
-            this.emoji = getFirstEmoji(emoji);
+            this.emoji = emoji;//getFirstEmoji(emoji);
         } else {
             throw new Error(`'${emoji}' is not a valid emoji'`);
         }
@@ -112,26 +116,12 @@ class Orthomoji {
     }
 
     /**
-     * Sets the level of compression to use when generating an image
-     *
-     * @param {number} level - Level of PNG compression
-     * @returns {this} Chain with other functions to generate an image
-     */
-    setPNGCompressionLevel(level) {
-        if (level >= 0 && level <= 9) {
-            this.compressionLvl = level;
-            return this;
-        }
-        throw new Error('PNG compression level must be between 0 and 9.');
-    }
-
-    /**
      * Generates an emoji-text image and saves it to a destination
      * =Mandatory
      * 
      * @param {string} destination - Path of where to save the image to
      */
-    async generate(destination) {
+    async generate() {
         // A bit of error checking
         if (this.text === null || this.emoji === null) {
             let errorStr = '';
@@ -146,19 +136,13 @@ class Orthomoji {
         }
 
         const borderObj = (this.borderStyle === null) ? {} : this.borderStyle;
-        const editedCanvas = await addTextToCanvas(
+        await addTextToCanvas(
             this.#canvas,
             this.text,
             emojifyFont(font, this.emoji, this.spaceEmoji),
             this.emojiSize,
             this.bgStyle,
             borderObj
-        );
-
-        saveToDestination(
-            destination,
-            editedCanvas,
-            this.compressionLvl
         );
     }
 };

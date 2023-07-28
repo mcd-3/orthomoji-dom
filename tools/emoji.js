@@ -44,7 +44,7 @@ const getFirstEmojiFallback = (str, fallback = '') => {
  */
 const emojifyFont = (fontJson, emoji, space = ' ', newline = '')  => {
     if (hasValidEmoji(emoji)) {
-        const emojiChar = getFirstEmoji(emoji);
+        const emojiChar = emoji;
         const spaceChar = getFirstEmojiFallback(space, ' ');
         const newlineChar = getFirstEmojiFallback(newline);
         const emojifiedJson = {};

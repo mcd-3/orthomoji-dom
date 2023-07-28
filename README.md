@@ -1,20 +1,19 @@
-# Orthomoji
+# Orthomoji DOM
 
 🖋️😄 **Orthography + Emojis** 😄🖋️</br>
-Create image-based messages with emojis!
+Create image-based messages with emojis!</br>
+A fork of [Orthomoji](https://github.com/mcd-3/orthomoji)
 
 ![Orthomoji](./assets/orthomoji_title.png)
 
 ## Installation
-NOTE: This package requires Node 16.20.1. You may encounter errors if you use another version!
-
 You may install Orthomoji using NPM:
 ```shell
 // From NPM directly
-npm install orthomoji --save
+npm install orthomoji-dom --save
 
 // From GitHub
-npm install git+https://github.com/mcd-3/orthomoji.git
+npm install git+https://github.com/mcd-3/orthomoji-dom.git
 ```
 
 ## How to use
@@ -48,7 +47,6 @@ Orthomoji provides a few extra options to customize your text:
 |`setBackgroundStyle`    | No        | Sets the color or style of the image background    |
 |`setBorder`             | No        | Sets the width and color of the image border       |
 |`setSpaceEmoji`         | No        | Sets the emoji to use for letter whitespace        |
-|`setPNGCompressionLevel`| No        | Sets the level of compression to the generate image|
 |`generate`              | Yes       | Generates an emoji-text image                      |
 
 ## Function Parameters
@@ -73,9 +71,6 @@ Here is a list of all function paramaters you will need to successfully build an
 
 ### setSpaceEmoji
 **emoji: String** - Emoji to use for letter whitespace
-
-### setPNGCompressionLevel
-**level: Number** - PNG compression level between 0 and 9. 0 means minimal compression while 9 is maximum compression
 
 ### generate
 **destination: String** - Destination path to save final image to
