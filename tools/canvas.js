@@ -1,6 +1,8 @@
+/**
+ * THIS FILE HAS BEEN REPLACED BY THE setup-orthomoji.sh SCRIPT FILE
+ */
+
 import { drawBorderToCanvas } from './../tools/border.js';
-import pkg from 'node-canvas-with-twemoji';
-const { fillTextWithTwemoji } = pkg;
 
 /**
  * Number of characters per row/column in a letter
@@ -138,7 +140,7 @@ const addTextToCanvas = async (canvas, str, fontSet, fontSize, bgStyle, borderSt
                     currentX = topX;
                     currentY += fontSize;
                 }
-                await fillTextWithTwemoji(ctx, elem, currentX, currentY);
+                ctx.fillText(elem, currentX, currentY)
             };
             currentY = topY;
             currentX = topX + spacing;

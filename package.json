@@ -1,16 +1,21 @@
 {
-  "name": "orthomoji",
-  "version": "1.5.1",
+  "name": "orthomoji-dom",
+  "version": "2.0.0",
   "description": "Create text art with emojis!",
   "type": "module",
   "main": "index.js",
   "author": "Matthew Carvalho-Dagenais",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcd-3/orthomoji.git"
+    "url": "https://github.com/mcd-3/orthomoji-dom.git"
   },
   "keywords": [
     "orthomoji",
+    "orthomoji-dom",
+    "dom",
+    "orthomoji dom",
+    "orthomoji web",
+    "orthomoji html",
     "orthography",
     "emoji",
     "emoji words",
@@ -18,8 +23,5 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "canvas": "2.8.0",
-    "node-canvas-with-twemoji": "0.1.6",
-    "sharp": "0.29.3"
   }
 }
