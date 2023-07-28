@@ -1,11 +1,9 @@
-/**
- * THIS FILE HAS BEEN REPLACED BY THE setup-orthomoji.sh SCRIPT FILE
- */
-
 import { sanitizeText } from '../tools/text-sanitizer.js';
 import { emojifyFont, hasValidEmoji, getFirstEmoji } from '../tools/emoji.js';
 import { font } from '../fonts/orthomoji.js';
 import { addTextToCanvas } from '../tools/canvas.js';
+
+let canvas = null;
 
 /**
  * Base Orthomoji class. Generates an emoji-text image
@@ -13,11 +11,9 @@ import { addTextToCanvas } from '../tools/canvas.js';
  * It is mandatory to set the text and emoji before calling .generate()
  */
 class Orthomoji {
-    #canvas
-
-    constructor(canvas) {
-        if (typeof canvas == 'string') {
-            this.#canvas = document.getElementById("main-canvas");
+    constructor(canvasID) {
+        if (typeof canvasID == 'string') {
+            canvas = document.getElementById(canvasID);
         } else {
             throw new Error('ERROR: orthomoji-dom only accepts the ID of a canvas at the moment');
         }
@@ -137,7 +133,7 @@ class Orthomoji {
 
         const borderObj = (this.borderStyle === null) ? {} : this.borderStyle;
         await addTextToCanvas(
-            this.#canvas,
+            canvas,
             this.text,
             emojifyFont(font, this.emoji, this.spaceEmoji),
             this.emojiSize,
